@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>מצאתי! · פינת אבדות ומציאות חכמה עם סוכני AI</title>
+    <meta name="description" content="מצאתי! היא פינת אבדות ומציאות חכמה לבתי ספר, גנים ומתנ״סים: מצלמים את מה שנמצא, כותבים מה אבד, וסוכני AI ב-n8n מתאימים ומודיעים. פרויקט גמר, הדגמה חיה." />
+    <meta name="robots" content="noindex" />
+    <meta property="og:title" content="מצאתי! · פינת אבדות ומציאות חכמה" />
+    <meta property="og:description" content="מצלמים, כותבים, וסוכני AI מחזירים את האבדה הביתה. הדגמה חיה על n8n." />
+    <meta name="theme-color" content="#2c1520" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Gveret+Levin&family=Rubik:wght@500;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script>
+      // Boot: mark JS as available and restore accessibility choices before first paint.
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        try {
+          var s = JSON.parse(localStorage.getItem("matzati-a11y") || "{}");
+          Object.keys(s).forEach(function (k) {
+            if (s[k]) d.setAttribute("data-a11y-" + k, s[k]);
+          });
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">דילוג לתוכן</a>
+
+    <header class="site-header">
+      <div class="wrap header-row">
+        <a class="logo" href="#top" aria-label="מצאתי! לראש העמוד">
+          <svg viewBox="0 0 44 44" width="40" height="40" aria-hidden="true">
+            <path d="M12 6h16l12 14-12 16H12q-6 0-6-6V12q0-6 6-6z" fill="#b03a63" />
+            <circle cx="15" cy="21" r="3.6" fill="#fbf6f0" />
+            <path d="M23 20.5l3.6 3.6 6.4-7.4" fill="none" stroke="#fbf6f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="logo-text">מצאתי<span class="logo-bang">!</span></span>
+        </a>
+        <nav class="site-nav" aria-label="ניווט ראשי">
+          <a href="#how">איך זה עובד</a>
+          <a href="#demo">נסו בעצמכם</a>
+          <a href="#board">הלוח החי</a>
+          <a href="#chat">מוצי הבוט</a>
+          <a href="#behind">מאחורי הקלעים</a>
+          <a href="#video">סרטון</a>
+          <a href="game.html">משחק</a>
+        </nav>
+        <a class="btn btn-accent btn-small header-cta" href="#demo">להדגמה החיה</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">פרויקט גמר · סוכני AI ואוטומציה ב-n8n</span>
+            <h1>כל מה שהלך לאיבוד <span class="marker"><span class="hand">חוזר הביתה</span></span></h1>
+            <p class="hero-lead">
+              <strong>מצאתי!</strong> היא פינת אבדות ומציאות חכמה לבתי ספר, גנים ומתנ״סים. מצלמים את מה שנמצא, כותבים מה אבד, ומערך של סוכני AI מתאר, מתאים ומודיע. בלי קבוצת וואטסאפ מוצפת ובלי ערימת מעילים בסוף השנה.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#demo">נסו את ההדגמה החיה</a>
+              <a class="btn btn-ghost" href="#video">צפו בסרטון</a>
+            </div>
+            <ul class="hero-chips" aria-label="מה יש בפרויקט">
+              <li class="chip">5 תהליכים חיים ב-n8n</li>
+              <li class="chip">סוכן ראשי + 4 סוכני משנה</li>
+              <li class="chip">זיהוי פריט מתמונה</li>
+            </ul>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <div class="line-rope"></div>
+            <div class="hang hang-1">
+              <div class="tag tag-peach">
+                <div class="tag-hole"></div>
+                <div class="tag-art" data-item="bottle" data-color="#2f6fe0" data-mark="dino"></div>
+                <div class="tag-title">בקבוק כחול</div>
+                <div class="tag-status st-found">נמצא במגרש</div>
+              </div>
+            </div>
+            <div class="hang hang-2">
+              <div class="tag tag-mint">
+                <div class="tag-hole"></div>
+                <div class="tag-art" data-item="hoodie" data-color="#9a979b"></div>
+                <div class="tag-title">קפוצ׳ון אפור</div>
+                <div class="tag-status st-wait">מחכה לבעלים</div>
+              </div>
+            </div>
+            <div class="hang hang-3">
+              <div class="tag tag-lilac">
+                <div class="tag-hole"></div>
+                <div class="tag-art" data-item="pencilcase" data-color="#f08a2c"></div>
+                <div class="tag-title">קלמר כתום</div>
+                <div class="tag-status st-match">נמצאה התאמה</div>
+              </div>
+            </div>
+            <div class="hang hang-4">
+              <div class="tag tag-blush">
+                <div class="tag-hole"></div>
+                <div class="tag-art" data-item="cap" data-color="#3f9a5a"></div>
+                <div class="tag-title">כובע ירוק</div>
+                <div class="tag-status st-back">חזר הביתה</div>
+              </div>
+            </div>
+            <p class="art-caption">המחשה: כל פריט מקבל תווית דיגיטלית וסטטוס</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROBLEM -->
+      <section class="problem" aria-labelledby="problem-title">
+        <div class="wrap problem-grid">
+          <div data-reveal>
+            <span class="eyebrow">הבעיה</span>
+            <h2 id="problem-title">פינת האבדות הרגילה היא ארגז. וארגז לא יודע לחפש.</h2>
+          </div>
+          <ul class="pain-list">
+            <li data-reveal>
+              <strong>הורים שואלים שוב ושוב</strong>
+              <span>״מישהו ראה קפוצ׳ון אפור?״ בקבוצת הכיתה, ואף אחד לא באמת בודק.</span>
+            </li>
+            <li data-reveal>
+              <strong>המזכירות עסוקה</strong>
+              <span>כל שאלה על שעות איסוף או על פריט מסוים עוצרת עבודה אחרת.</span>
+            </li>
+            <li data-reveal>
+              <strong>פריטים טובים נזרקים</strong>
+              <span>מה שלא נאסף עד סוף התקופה נתרם או הולך לפח, גם כשהבעלים חיפשו אותו.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- HOW -->
+      <section class="how" id="how" aria-labelledby="how-title">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">איך זה עובד</span>
+            <h2 id="how-title">שלושה צעדים, ורוב העבודה קורית <span class="marker">לבד</span></h2>
+          </div>
+          <ol class="steps">
+            <li class="step card" data-reveal>
+              <span class="step-num">1</span>
+              <h3>מצלמים או כותבים</h3>
+              <p>מי שמצא פריט מצלם אותו או מתאר אותו במשפט. מי שאיבד כותב מה חסר. אפשר בטופס ואפשר בשיחה עם מוצי, הבוט.</p>
+            </li>
+            <li class="step card" data-reveal>
+              <span class="step-num">2</span>
+              <h3>ה-AI מסדר ומתאים</h3>
+              <p>מודל ראייה ושפה הופך תמונה או משפט חופשי לכרטיס פריט מסודר, ומשווה אותו לכל הפריטים הפתוחים בצד השני.</p>
+            </li>
+            <li class="step card" data-reveal>
+              <span class="step-num">3</span>
+              <h3>הצוות מקבל הודעה</h3>
+              <p>כשיש התאמה נשלח מייל לצוות עם הפרטים. כל בוקר נשלח דוח על מה שמחכה, ומה מתקרב לסוף תקופת השמירה.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- LIVE DEMO -->
+      <section class="demo" id="demo" aria-labelledby="demo-title">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">הדגמה חיה</span>
+            <h2 id="demo-title">נסו בעצמכם. זה מחובר באמת ל-n8n.</h2>
+            <p class="section-lead">הטופס הזה שולח דיווח אמיתי לאוטומציה. תוך כמה שניות תקבלו כרטיס פריט שה-AI בנה, ואם יש התאמה, תראו אותה.</p>
+          </div>
+
+          <div class="demo-grid">
+            <form class="card demo-form" id="report-form" novalidate>
+              <fieldset class="kind-switch">
+                <legend class="sr-only">סוג הדיווח</legend>
+                <label class="kind-option">
+                  <input type="radio" name="kind" value="found" checked />
+                  <span>מצאתי משהו</span>
+                </label>
+                <label class="kind-option">
+                  <input type="radio" name="kind" value="lost" />
+                  <span>איבדתי משהו</span>
+                </label>
+              </fieldset>
+
+              <label class="field">
+                <span class="field-label">מה הפריט?</span>
+                <textarea name="description" id="f-description" rows="3" maxlength="600" placeholder="למשל: קלמר כתום עם שני רוכסנים, בפנים עפרונות ומחק בצורת תות"></textarea>
+              </label>
+
+              <div class="examples" aria-label="דוגמאות מוכנות">
+                <span class="examples-label">דוגמאות:</span>
+                <button type="button" class="chip chip-btn" data-example="found|קלמר כתום עם שני רוכסנים, בפנים עפרונות ומחק בצורת תות|ליד כיתה ג׳2">קלמר שנמצא</button>
+                <button type="button" class="chip chip-btn" data-example="lost|כובע מצחייה ירוק כהה עם רצועה מאחור|חצר">כובע שאבד</button>
+                <button type="button" class="chip chip-btn" data-example-image="assets/img/sample-bottle.png" data-kind="lost">רק תמונה</button>
+              </div>
+
+              <label class="field">
+                <span class="field-label">איפה? <span class="optional">(לא חובה)</span></span>
+                <input type="text" name="location" id="f-location" maxlength="80" placeholder="חצר, ספרייה, אולם ספורט" />
+              </label>
+
+              <div class="field">
+                <span class="field-label" id="photo-label">תמונה <span class="optional">(לא חובה, ה-AI יתאר אותה לבד)</span></span>
+                <div class="photo-row">
+                  <label class="btn btn-ghost btn-small photo-btn">
+                    <input type="file" id="f-image" accept="image/*" class="sr-only" aria-labelledby="photo-label" />
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+                    בחירת תמונה
+                  </label>
+                  <div class="photo-preview" id="photo-preview" hidden>
+                    <img alt="התמונה שנבחרה" id="photo-img" />
+                    <button type="button" class="photo-remove" id="photo-remove" aria-label="הסרת התמונה">×</button>
+                  </div>
+                </div>
+              </div>
+
+              <p class="demo-note">זו הדגמה: הדיווח נשמר בטבלת הדגמה ומוצג בלוח הציבורי. אל תכתבו פרטים אישיים אמיתיים.</p>
+              <p class="form-error" id="form-error" role="alert" hidden></p>
+              <button class="btn btn-primary" type="submit" id="report-submit">שליחה לאוטומציה</button>
+            </form>
+
+            <div class="demo-side">
+              <div class="card pipeline" aria-live="polite">
+                <h3>מה קורה עכשיו ב-n8n</h3>
+                <ol class="pipe-steps" id="pipe-steps">
+                  <li data-step="webhook"><span class="pipe-dot"></span>Webhook מקבל את הדיווח ובודק אותו</li>
+                  <li data-step="vlm"><span class="pipe-dot"></span>מודל ראייה ושפה בונה כרטיס פריט</li>
+                  <li data-step="match"><span class="pipe-dot"></span>השוואה מול הפריטים הפתוחים</li>
+                  <li data-step="save"><span class="pipe-dot"></span>שמירה ב-Data Table ורישום ביומן</li>
+                  <li data-step="mail"><span class="pipe-dot"></span>מייל לצוות, רק אם נמצאה התאמה</li>
+                </ol>
+                <p class="pipe-hint" id="pipe-hint">שלחו דיווח כדי לראות את התהליך רץ.</p>
+              </div>
+
+              <div class="result-empty" id="result-empty">
+                <div data-item="tag" data-color="#f7cfd9"></div>
+                <p>כאן יופיע כרטיס הפריט שה-AI יבנה מהדיווח שלכם.</p>
+              </div>
+              <div class="result" id="report-result" hidden tabindex="-1"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOARD -->
+      <section class="board" id="board" aria-labelledby="board-title">
+        <div class="wrap">
+          <div class="section-head board-head" data-reveal>
+            <div>
+              <span class="eyebrow">הלוח החי</span>
+              <h2 id="board-title">מה מחכה עכשיו בפינת האבדות</h2>
+              <p class="section-lead">הנתונים נקראים עכשיו מטבלת ה-n8n. בלוח הציבורי אין פרטי קשר, רק מה שצריך כדי לזהות פריט.</p>
+            </div>
+            <button class="btn btn-ghost btn-small" type="button" id="board-refresh">רענון</button>
+          </div>
+
+          <div class="stats" id="board-stats" aria-live="polite"></div>
+
+          <div class="board-filters" role="group" aria-label="סינון הלוח">
+            <button type="button" class="chip chip-btn" data-filter="all" aria-pressed="true">הכול</button>
+            <button type="button" class="chip chip-btn" data-filter="found" aria-pressed="false">נמצאו</button>
+            <button type="button" class="chip chip-btn" data-filter="lost" aria-pressed="false">אבדו</button>
+            <button type="button" class="chip chip-btn" data-filter="matched" aria-pressed="false">הותאמו</button>
+            <button type="button" class="chip chip-btn" data-filter="returned" aria-pressed="false">הוחזרו</button>
+          </div>
+
+          <div class="board-layout">
+            <ul class="board-grid" id="board-grid" aria-label="פריטים בלוח"></ul>
+            <aside class="card activity" aria-labelledby="activity-title">
+              <h3 id="activity-title">יומן האוטומציה</h3>
+              <p class="demo-note">מה שהתהליכים עשו בפועל, לפי הסדר.</p>
+              <ol class="activity-list" id="activity-list"></ol>
+            </aside>
+          </div>
+          <p class="demo-note board-note">פריטי הפתיחה בלוח הם נתוני הדגמה. דיווחים שתשלחו מצטרפים אליהם.</p>
+        </div>
+      </section>
+
+      <!-- CHAT -->
+      <section class="chat-section" id="chat" aria-labelledby="chat-title">
+        <div class="wrap chat-grid">
+          <div class="chat-copy" data-reveal>
+            <span class="eyebrow eyebrow-on-deep">סוכן שיחתי במערך אורקסטרציה</span>
+            <h2 id="chat-title">מוצי מדבר. ארבעה סוכנים עובדים מאחוריו.</h2>
+            <p>מוצי הוא הסוכן הראשי: הוא מנהל שיחה חופשית, זוכר את ההקשר, ומחליט לאיזה סוכן משנה להעביר כל בקשה. מתחת לכל תשובה תראו מי עבד עליה.</p>
+            <ul class="agents">
+              <li><span class="agent-dot" style="--c: var(--peach)"></span><div><strong>סוכן הדיווחים</strong><span>רושם אבדה או מציאה דרך אותה אוטומציה של הטופס.</span></div></li>
+              <li><span class="agent-dot" style="--c: var(--mint)"></span><div><strong>סוכן האיתור</strong><span>מחפש בלוח ובודק סטטוס של קוד דיווח.</span></div></li>
+              <li><span class="agent-dot" style="--c: var(--lilac)"></span><div><strong>סוכן הידע</strong><span>עונה מתוך מאגר הנהלים, ומחפש ברשת כשצריך.</span></div></li>
+              <li><span class="agent-dot" style="--c: var(--sun)"></span><div><strong>סוכן הצוות</strong><span>פרטי קשר וסימון ״הוחזר״. נפתח רק עם קוד צוות.</span></div></li>
+            </ul>
+
+            <div class="staff-box">
+              <h3>מצב צוות</h3>
+              <p>ההרשאה נבדקת בשרת מול טבלת משתמשים, לא לפי מה שכותבים בצ׳אט. קוד ההדגמה: <code dir="ltr">4826</code></p>
+              <form class="staff-form" id="staff-form">
+                <label class="sr-only" for="staff-code">קוד צוות</label>
+                <input type="text" id="staff-code" inputmode="numeric" autocomplete="off" maxlength="12" placeholder="קוד צוות" dir="ltr" />
+                <button class="btn btn-small btn-on-deep" type="submit">כניסה</button>
+                <button class="btn btn-small btn-ghost-on-deep" type="button" id="staff-reset" hidden>איפוס נתוני ההדגמה</button>
+              </form>
+              <p class="staff-status" id="staff-status" role="status"></p>
+            </div>
+          </div>
+
+          <div class="chat-panel" data-reveal>
+            <div class="chat-head">
+              <div class="motzi" aria-hidden="true">
+                <svg viewBox="0 0 64 64" width="44" height="44">
+                  <path d="M16 8h26l16 22-16 26H16q-8 0-8-8V16q0-8 8-8z" fill="#fbd9c0" stroke="#2b1a24" stroke-width="3" stroke-linejoin="round" />
+                  <circle cx="24" cy="28" r="4" fill="#2b1a24" /><circle cx="40" cy="28" r="4" fill="#2b1a24" />
+                  <path d="M25 40q7 6 14 0" fill="none" stroke="#2b1a24" stroke-width="3" stroke-linecap="round" />
+                  <circle cx="18" cy="36" r="3" fill="#f08cb4" opacity=".7" /><circle cx="46" cy="36" r="3" fill="#f08cb4" opacity=".7" />
+                </svg>
+              </div>
+              <div>
+                <strong>מוצי</strong>
+                <span class="chat-role" id="chat-role">מדבר עם: אורח</span>
+              </div>
+            </div>
+            <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-label="שיחה עם מוצי" tabindex="0"></div>
+            <div class="chat-suggest" id="chat-suggest" aria-label="הצעות לשאלות">
+              <button type="button" class="chip chip-btn">איבדתי קופסת אוכל ורודה עם חד-קרן</button>
+              <button type="button" class="chip chip-btn">מה שעות האיסוף?</button>
+              <button type="button" class="chip chip-btn">מצאתי מטריה שחורה ליד השער</button>
+              <button type="button" class="chip chip-btn">תראה לי מה מחכה למסירה</button>
+            </div>
+            <form class="chat-form" id="chat-form">
+              <label class="sr-only" for="chat-input">הודעה למוצי</label>
+              <input type="text" id="chat-input" maxlength="500" autocomplete="off" placeholder="כתבו למוצי..." />
+              <button class="btn btn-accent btn-small" type="submit" id="chat-send">שליחה</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- BEHIND THE SCENES -->
+      <section class="behind" id="behind" aria-labelledby="behind-title">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">מאחורי הקלעים</span>
+            <h2 id="behind-title">חמישה תהליכים ב-n8n, שני תוצרים של פרויקט גמר</h2>
+            <p class="section-lead">תוצר 1 הוא אוטומציה עסקית מקצה לקצה. תוצר 2 הוא סוכן שיחתי שיושב כחוליה בתוך אותה אוטומציה: כשמוצי רושם דיווח, הוא מפעיל את אותו תהליך בדיוק שהטופס מפעיל.</p>
+          </div>
+
+          <div class="arch card" data-reveal>
+            <div class="arch-col">
+              <h3>נקודות כניסה</h3>
+              <div class="arch-node n-in">טופס באתר<small>טקסט או תמונה</small></div>
+              <div class="arch-node n-in">צ׳אט עם מוצי<small>שיחה חופשית</small></div>
+              <div class="arch-node n-in">לקוח MCP<small>למשל Claude</small></div>
+              <div class="arch-node n-in">שעון<small>כל בוקר ב-08:00</small></div>
+            </div>
+            <div class="arch-arrow" aria-hidden="true"></div>
+            <div class="arch-col arch-main">
+              <h3>התהליכים</h3>
+              <div class="arch-node n-wf"><b>1 · קליטה והתאמה</b><small>Webhook, מודל ראייה ושפה, התאמה, מייל, יומן, תיקון עצמי</small></div>
+              <div class="arch-node n-wf n-agent">
+                <b>2 · מוצי, סוכן ראשי</b>
+                <small>זיכרון שיחה, הרשאות, ניתוב בין מודלים ב-OpenRouter</small>
+                <div class="sub-agents"><span>דיווחים</span><span>איתור</span><span>ידע + Tavily</span><span>צוות</span></div>
+              </div>
+              <div class="arch-node n-wf"><b>3 · לוח, צוות ודוח יומי</b><small>לוח מסונן, בדיקת קוד צוות בשרת, דוח בוקר בלי מודל שפה</small></div>
+              <div class="arch-node n-wf"><b>4 · ניטור תקלות</b><small>Error Trigger, רישום ביומן והתראה במייל</small></div>
+              <div class="arch-node n-wf"><b>5 · שרת MCP</b><small>חושף את הכלים לשימוש חוזר</small></div>
+            </div>
+            <div class="arch-arrow" aria-hidden="true"></div>
+            <div class="arch-col">
+              <h3>נתונים ותוצרים</h3>
+              <div class="arch-node n-out">Data Tables<small>פריטים, משתמשים, ידע, יומן</small></div>
+              <div class="arch-node n-out">Gmail<small>התאמה, דוח בוקר, תקלות</small></div>
+              <div class="arch-node n-out">האתר הזה<small>כרטיס פריט, לוח, יומן</small></div>
+            </div>
+          </div>
+
+          <div class="behind-grid">
+            <div class="card raci" data-reveal>
+              <h3>אפיון עסקי: מי עושה מה (RACI)</h3>
+              <div class="table-scroll" tabindex="0" role="region" aria-label="טבלת RACI">
+                <table>
+                  <thead>
+                    <tr><th scope="col">שלב</th><th scope="col">הורה / מוצא</th><th scope="col">מערכת AI</th><th scope="col">מזכירות</th><th scope="col">הנהלה</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><th scope="row">דיווח על פריט</th><td>R</td><td>A</td><td>I</td><td></td></tr>
+                    <tr><th scope="row">תיאור וקטלוג</th><td>C</td><td>R / A</td><td></td><td></td></tr>
+                    <tr><th scope="row">התאמה</th><td></td><td>R</td><td>A</td><td></td></tr>
+                    <tr><th scope="row">מסירה וזיהוי בעלים</th><td>C</td><td>I</td><td>R / A</td><td></td></tr>
+                    <tr><th scope="row">תרומת פריטים שלא נאספו</th><td>I</td><td>R (תזכורת)</td><td>R</td><td>A</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="demo-note">R מבצע · A אחראי סופי · C מתייעצים איתו · I מקבל עדכון</p>
+            </div>
+
+            <div class="card safety" data-reveal>
+              <h3>גבולות בטוחים</h3>
+              <ul class="check-list">
+                <li>הרשאת צוות נבדקת בשרת. ניסיון לשכנע את הבוט בצ׳אט לא עוזר.</li>
+                <li>הלוח הציבורי לא מחזיר פרטי קשר ולא תיאור מלא.</li>
+                <li>טקסט של משתמש וטקסט בתוך תמונה מטופלים כמידע, לא כהוראות.</li>
+                <li>אם ה-AI נכשל, הדיווח נשמר כמו שנכתב ונרשמת אזהרה.</li>
+                <li>דוח הבוקר הוא תהליך קבוע בלי מודל שפה. לא כל דבר צריך סוכן.</li>
+              </ul>
+            </div>
+          </div>
+
+          <details class="card syllabus" data-reveal>
+            <summary><h3>מה מהסילבוס נמצא בפרויקט</h3><span class="summary-hint">12 מפגשים</span></summary>
+            <ol class="syllabus-list">
+              <li><b>מבוא, פרומפטים והקשר</b><span>הנחיות מערכת לכל סוכן, עם תפקיד, כלים, כללים וסגנון.</span></li>
+              <li><b>n8n וסוכן עם כלים</b><span>חמישה תהליכים פעילים, סוכנים שמבצעים פעולות אמיתיות.</span></li>
+              <li><b>כלים, זיכרון ו-OpenRouter</b><span>זיכרון שיחה לפי משתמש, שני מודלים שונים דרך OpenRouter, מייל ב-Gmail.</span></li>
+              <li><b>חיפוש מבוסס AI</b><span>סוכן הידע משתמש ב-Tavily לשאלות שלא במאגר.</span></li>
+              <li><b>RAG בסיסי</b><span>סוכן הידע שולף ממאגר נהלים ועונה רק ממנו. בגרסה הזו השליפה היא מטבלה, בלי חיפוש וקטורי.</span></li>
+              <li><b>VLM ו-Multi-Agent</b><span>מודל ראייה ושפה מתאר פריט מתמונה. סוכן ראשי מפעיל ארבעה סוכני משנה.</span></li>
+              <li><b>API, פלט מובנה ושרת MCP</b><span>קריאה ישירה ל-API של OpenRouter עם פלט JSON קבוע, ושרת MCP שחושף את הכלים.</span></li>
+              <li><b>Flow Nodes וגבולות</b><span>IF, Set, Code, Schedule. דוח בוקר קבוע בלי מודל שפה.</span></li>
+              <li><b>אפיון ומיפוי תהליכים</b><span>מיפוי נקודות הכאב וטבלת RACI בעמוד הזה.</span></li>
+              <li><b>תמחור לפי ערך</b><span>מודל מוצע: הקמה חד-פעמית ותחזוקה חודשית לפי מוסד. בלי מחירים בהדגמה.</span></li>
+              <li><b>טיפול בתקלות</b><span>ניסיון חוזר, גיבוי כשה-AI נופל, ותהליך ניטור ששולח התראה.</span></li>
+              <li><b>משתמשים והרשאות</b><span>אורח מול צוות לפי טבלת משתמשים. כאן ב-Data Tables של n8n, ו-Supabase הוא השלב הבא.</span></li>
+            </ol>
+          </details>
+        </div>
+      </section>
+
+      <!-- VIDEO -->
+      <section class="video-section" id="video" aria-labelledby="video-title">
+        <div class="wrap video-grid">
+          <div data-reveal>
+            <span class="eyebrow">סרטון הדגמה</span>
+            <h2 id="video-title">דקה וחצי שמראות את הכול</h2>
+            <p>צילום מסך אמיתי של האתר הזה מול ה-n8n החי: דיווח, התאמה, שיחה עם מוצי, מצב צוות והמשחק.</p>
+            <a class="btn btn-ghost btn-small" href="video/matzati-demo.mp4" download>הורדת הסרטון</a>
+          </div>
+          <div class="video-frame card" data-reveal>
+            <video controls preload="metadata" playsinline poster="video/poster.jpg" aria-label="סרטון הדגמה של מצאתי!">
+              <source src="video/matzati-demo.mp4" type="video/mp4" />
+              הדפדפן לא מציג וידאו. אפשר <a href="video/matzati-demo.mp4">להוריד את הסרטון</a>.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <!-- GAME TEASER -->
+      <section class="game-teaser" aria-labelledby="game-title">
+        <div class="wrap">
+          <div class="card teaser-card" data-reveal>
+            <div>
+              <span class="eyebrow">משחק קליל</span>
+              <h2 id="game-title">חושבים שאתם מהירים יותר מהסוכן?</h2>
+              <p>במשחק אתם סוכן ההתאמות: מגיע דיווח אבדה, ועל המדף ארבעה פריטים דומים. מצאו את הנכון לפני שהזמן נגמר. ככה בדיוק נראית העבודה שה-AI חוסך.</p>
+              <a class="btn btn-primary" href="game.html">למשחק</a>
+            </div>
+            <div class="teaser-art" aria-hidden="true">
+              <div class="tag-art" data-item="umbrella" data-color="#8a63d2" data-mark="dots"></div>
+              <div class="tag-art" data-item="bag" data-color="#d63b3b" data-mark="star"></div>
+              <div class="tag-art" data-item="lunchbox" data-color="#f08cb4" data-mark="unicorn"></div>
+              <div class="tag-art" data-item="ball" data-color="#f2c230"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div>
+          <strong class="footer-logo">מצאתי!</strong>
+          <p>פרויקט גמר, Focus AI BotCamp. נבנה על ידי ליז חג׳ג׳, Liz Code &amp; Color.</p>
+          <p class="footer-note">האתר הוא הדגמה. הפריטים, המוסד והנהלים בדויים ומסומנים כנתוני הדגמה. האוטומציה והסוכנים אמיתיים ורצים על n8n.</p>
+        </div>
+        <a class="btn btn-whatsapp" href="https://wa.me/972546887442?text=%D7%94%D7%99%D7%99%20%D7%9C%D7%99%D7%96%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%9E%D7%A6%D7%90%D7%AA%D7%99!%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.82 9.82 0 0 1 6.99 2.9 9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88zM20.52 3.45A11.8 11.8 0 0 0 12.04 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.54 0 11.88-5.34 11.88-11.89 0-3.18-1.24-6.17-3.41-8.46z" /></svg>
+          דברו איתי בוואטסאפ
+        </a>
+      </div>
+    </footer>
+
+    <!-- Accessibility menu -->
+    <div class="a11y" id="a11y">
+      <button class="a11y-toggle" type="button" aria-expanded="false" aria-controls="a11y-panel" aria-label="תפריט נגישות">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><circle cx="12" cy="4.5" r="2" fill="currentColor" /><path d="M4 8.5h16M12 8.5v6m0 0-3.5 6m3.5-6 3.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </button>
+      <div class="a11y-panel" id="a11y-panel" hidden>
+        <h2>נגישות</h2>
+        <button type="button" data-a11y="text" aria-pressed="false">הגדלת טקסט</button>
+        <button type="button" data-a11y="contrast" aria-pressed="false">ניגודיות גבוהה</button>
+        <button type="button" data-a11y="links" aria-pressed="false">הדגשת קישורים</button>
+        <button type="button" data-a11y="motion" aria-pressed="false">עצירת אנימציות</button>
+        <button type="button" data-a11y-reset>איפוס</button>
+      </div>
+    </div>
+
+    <script type="module" src="assets/js/main.js"></script>
+  </body>
+</html>

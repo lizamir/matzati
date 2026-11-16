@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>המשחק של מצאתי! · אתם סוכן ההתאמות</title>
+    <meta name="description" content="משחק קליל שמדמה את העבודה של סוכן ההתאמות במצאתי!: מגיע דיווח אבדה, ואתם מוצאים את הפריט הנכון על המדף לפני שהזמן נגמר." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#2c1520" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Gveret+Levin&family=Rubik:wght@500;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/game.css" />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        try {
+          var s = JSON.parse(localStorage.getItem("matzati-a11y") || "{}");
+          Object.keys(s).forEach(function (k) {
+            if (s[k]) d.setAttribute("data-a11y-" + k, s[k]);
+          });
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#game">דילוג למשחק</a>
+
+    <header class="game-header">
+      <div class="wrap game-header-row">
+        <a class="logo" href="index.html" aria-label="חזרה לאתר מצאתי!">
+          <svg viewBox="0 0 44 44" width="36" height="36" aria-hidden="true">
+            <path d="M12 6h16l12 14-12 16H12q-6 0-6-6V12q0-6 6-6z" fill="#b03a63" />
+            <circle cx="15" cy="21" r="3.6" fill="#fbf6f0" />
+            <path d="M23 20.5l3.6 3.6 6.4-7.4" fill="none" stroke="#fbf6f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="logo-text">מצאתי<span class="logo-bang">!</span></span>
+        </a>
+        <div class="hud" id="hud" hidden>
+          <span class="hud-pill">סיבוב <b id="hud-round">1</b>/<span id="hud-total">8</span></span>
+          <span class="hud-pill">ניקוד <b id="hud-score">0</b></span>
+          <span class="hud-pill hud-streak" id="hud-streak" hidden>רצף <b id="hud-streak-n">0</b></span>
+        </div>
+        <a class="btn btn-ghost btn-small" href="index.html">חזרה לאתר</a>
+      </div>
+    </header>
+
+    <main id="game" class="wrap game-main">
+      <!-- Start screen -->
+      <section class="screen card" id="screen-start" aria-labelledby="start-title">
+        <span class="eyebrow">משחק קליל · דקה וחצי</span>
+        <h1 id="start-title">אתם <span class="marker"><span class="hand">סוכן ההתאמות</span></span></h1>
+        <p class="start-lead">הורה שולח דיווח אבדה. על המדף ארבעה פריטים שנמצאו, וחלקם דומים מאוד. בחרו את הפריט שמתאים לתיאור לפני שהזמן נגמר. שמונה סיבובים, וזה נהיה קשה יותר.</p>
+        <div class="start-demo" aria-hidden="true">
+          <div class="bubble-mini">״איבדנו בקבוק כחול עם כוכב״</div>
+          <div class="start-items">
+            <span data-item="bottle" data-color="#2f6fe0" data-mark="star"></span>
+            <span data-item="bottle" data-color="#2f6fe0" data-mark="heart"></span>
+            <span data-item="bottle" data-color="#6fc3e8" data-mark="star"></span>
+          </div>
+        </div>
+        <label class="relax">
+          <input type="checkbox" id="relax-mode" />
+          <span>מצב רגוע, בלי שעון</span>
+        </label>
+        <button class="btn btn-primary btn-big" type="button" id="start-btn">מתחילים</button>
+        <p class="demo-note" id="best-line" hidden></p>
+        <p class="demo-note">אפשר לשחק גם במקלדת: המקשים 1 עד 4 בוחרים פריט.</p>
+      </section>
+
+      <!-- Play screen -->
+      <section class="screen" id="screen-play" hidden aria-labelledby="play-title">
+        <h1 class="sr-only" id="play-title">סיבוב משחק</h1>
+        <div class="report card" id="report" aria-live="polite">
+          <div class="report-from">
+            <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#ddd3f5" stroke="#2b1a24" stroke-width="2.4" /><circle cx="24" cy="19" r="7" fill="#fff" stroke="#2b1a24" stroke-width="2.4" /><path d="M10 40q14-16 28 0" fill="#fff" stroke="#2b1a24" stroke-width="2.4" /></svg>
+            <span>דיווח אבדה חדש</span>
+          </div>
+          <p class="report-text" id="report-text"></p>
+        </div>
+
+        <div class="timer" id="timer" role="progressbar" aria-label="הזמן שנשאר" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+          <div class="timer-fill" id="timer-fill"></div>
+        </div>
+
+        <p class="shelf-label" id="shelf-label">על המדף בפינת האבדות. איזה פריט מתאים?</p>
+        <div class="shelf" id="shelf" role="group" aria-labelledby="shelf-label"></div>
+        <p class="feedback" id="feedback" role="status"></p>
+      </section>
+
+      <!-- End screen -->
+      <section class="screen card" id="screen-end" hidden aria-labelledby="end-title">
+        <span class="eyebrow">סוף משמרת</span>
+        <h1 id="end-title" tabindex="-1"></h1>
+        <p class="end-score">ניקוד: <b id="end-score">0</b> · התאמות נכונות: <b id="end-correct">0</b> מתוך <span id="end-total">8</span></p>
+        <p class="end-text" id="end-text"></p>
+        <div class="end-compare">
+          <p><strong>ומה עושה הסוכן האמיתי?</strong> הוא לא משווה לארבעה פריטים אלא לכל הלוח, מבין תיאור חופשי וגם תמונה, ושולח מייל לצוות כשיש התאמה. אפשר לנסות אותו עכשיו.</p>
+        </div>
+        <div class="end-actions">
+          <button class="btn btn-primary" type="button" id="again-btn">עוד משמרת</button>
+          <a class="btn btn-accent" href="index.html#demo">לנסות את הסוכן האמיתי</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="a11y" id="a11y">
+      <button class="a11y-toggle" type="button" aria-expanded="false" aria-controls="a11y-panel" aria-label="תפריט נגישות">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><circle cx="12" cy="4.5" r="2" fill="currentColor" /><path d="M4 8.5h16M12 8.5v6m0 0-3.5 6m3.5-6 3.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </button>
+      <div class="a11y-panel" id="a11y-panel" hidden>
+        <h2>נגישות</h2>
+        <button type="button" data-a11y="text" aria-pressed="false">הגדלת טקסט</button>
+        <button type="button" data-a11y="contrast" aria-pressed="false">ניגודיות גבוהה</button>
+        <button type="button" data-a11y="links" aria-pressed="false">הדגשת קישורים</button>
+        <button type="button" data-a11y="motion" aria-pressed="false">עצירת אנימציות</button>
+        <button type="button" data-a11y-reset>איפוס</button>
+      </div>
+    </div>
+
+    <script type="module" src="assets/js/game.js"></script>
+  </body>
+</html>
